@@ -44,6 +44,26 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();
             }
+
+            while (true)
+            {
+                if(int.Parse(input) > 2)
+                {
+                    maxNumber = int.Parse(input);
+                    break;
+                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine();
+                Console.WriteLine("══ Číslo musí byť väčšie ako 2! ══");
+                Console.WriteLine("    Skús to znovu ");
+                Console.ForegroundColor = ConsoleColor.White;
+                input = Console.ReadLine();
+            }
+            
+                
+            
+
+
         }
 
         static bool guessed(int num)
@@ -70,6 +90,12 @@ namespace ConsoleApp1
                 Console.WriteLine();
                 Console.WriteLine("» Číslo je väčšie ako najväčie možné číslo «");
             }
+            else if (guess < 0)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine();
+                Console.WriteLine("» Číslo musí byť kladné «");
+            }
             else if (num > guess)
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -93,13 +119,11 @@ namespace ConsoleApp1
             Start();
             Choose();
     
-
             if (isRunning)
             {
                 System.Random random = new System.Random();
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 int num = random.Next(maxNumber);
-
 
                 while (isRunning)
                 {
@@ -114,12 +138,8 @@ namespace ConsoleApp1
 
                     }
                 }
-
-
             }
-
         }
-            
     }
 }
 
