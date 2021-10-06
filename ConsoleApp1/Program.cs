@@ -5,6 +5,47 @@ namespace ConsoleApp1
     class Program
     {
         static bool isRunning;
+        static int maxNumber;
+
+        static void Start()
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("╔══ Chceš si zahrať hru? [y / n] ══╗");
+            Console.ForegroundColor = ConsoleColor.White;
+            string response = Console.ReadLine();
+
+            if (response == "y")
+            {
+                isRunning = true;
+            }
+            else
+            {
+                isRunning = false;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine();
+                Console.WriteLine("Tak nie no :(");
+                Console.WriteLine();
+            }
+        }
+
+        static void Choose()
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("═══ Napíš najvyššie číslo ktoré chceš hádať ═══");
+            Console.ForegroundColor = ConsoleColor.White;
+            string input = Console.ReadLine();
+
+            while (!int.TryParse(input, out maxNumber))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine();
+                Console.WriteLine("══ Toto nieje číslo! ══");
+                Console.WriteLine("    Skús to znovu ");
+                Console.ForegroundColor = ConsoleColor.White;
+                input = Console.ReadLine();
+            }
+        }
+
         static bool guessed(int num)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -23,8 +64,13 @@ namespace ConsoleApp1
                 input = Console.ReadLine();
             }
 
-            
-            if (num > guess)
+            if (guess > maxNumber)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine();
+                Console.WriteLine("» Číslo je väčšie ako najväčie možné číslo «");
+            }
+            else if (num > guess)
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine();
@@ -44,32 +90,18 @@ namespace ConsoleApp1
         }
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("╔══ Chceš si zahrať hru? [y / n] ══╗");
-            Console.ForegroundColor = ConsoleColor.White;
-            string response = Console.ReadLine();
-
-            if (response == "y")
-            {
-                isRunning = true;
-            }
-            else
-            {
-                isRunning = false;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine();
-                Console.WriteLine("Tak nie no :(");
-                Console.WriteLine();
-            }
+            Start();
+            Choose();
+    
 
             if (isRunning)
             {
                 System.Random random = new System.Random();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                int num = random.Next(5);
+                int num = random.Next(maxNumber);
 
 
-                while (true)
+                while (isRunning)
                 {
                     if (guessed(num))
                     {
@@ -79,10 +111,11 @@ namespace ConsoleApp1
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.White;
                         isRunning = false;
-                        break;
 
                     }
                 }
+
+
             }
 
         }
