@@ -44,7 +44,6 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();
             }
-
             while (true)
             {
                 if(int.Parse(input) > 2)
@@ -59,11 +58,6 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();
             }
-            
-                
-            
-
-
         }
 
         static bool guessed(int num)
@@ -83,7 +77,6 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();
             }
-
             if (guess > maxNumber)
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -135,11 +128,9 @@ namespace ConsoleApp1
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.White;
                         isRunning = false;
-
                     }
                 }
             }
         }
     }
 }
-
