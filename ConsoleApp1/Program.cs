@@ -20,7 +20,6 @@ namespace ConsoleApp1
             Console.WriteLine();
             Console.WriteLine();
         }
-
         static void StartTitle()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -75,7 +74,6 @@ namespace ConsoleApp1
             Console.WriteLine("                         |_| |_____|_____|  |_____|_____|_____|_____|");
             Console.WriteLine();
         }
-
 
         static void Start()
         {
@@ -160,6 +158,7 @@ namespace ConsoleApp1
             Console.ForegroundColor = ConsoleColor.White;
             string input = Console.ReadLine();
             int guess;
+
             while (!int.TryParse(input, out guess))
             {
                 ErrorTitle();
@@ -189,6 +188,7 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("«===============================» Myslím na väčšie číslo! «===============================»");
                 Console.WriteLine();
+                attempts++;
             }
             else if (num < guess)
             {
@@ -196,12 +196,12 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("«===============================» Myslím na menšie číslo! «===============================»");
                 Console.WriteLine();
+                attempts++;
             }
             else if (num == guess)
             {
                 return true;
             }
-            attempts++;
             return false;
         }
         static void Main(string[] args)
@@ -229,7 +229,6 @@ namespace ConsoleApp1
                 }
             }
             End();
-            
         }
     }
 }
